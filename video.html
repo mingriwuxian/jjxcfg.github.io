@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>观看视频</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-10px);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .video-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .video-item {
+            flex: 1 1 calc(50% - 20px);
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .video-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .video-item img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .video-item img:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            border-radius: 0 0 10px 10px;
+            font-size: 16px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>观看视频</h1>
+        <div class="video-list">
+            <div class="video-item" onclick="playVideo('video/10分钟速成Java.mp4', '10分钟速成Java')">
+                <img src="image/1.jpg" alt="视频1封面">
+                <div class="video-title">10分钟速成Java</div>
+            </div>
+            <div class="video-item" onclick="playVideo('video/半壁江山？.mp4', '半壁江山？')">
+                <img src="image/1.jpg" alt="视频2封面">
+                <div class="video-title">半壁江山？</div>
+            </div>
+            <div class="video-item" onclick="playVideo('video/抽象.mp4', '抽象')">
+                <img src="image/1.jpg" alt="视频3封面">
+                <div class="video-title">抽象</div>
+            </div>
+            <div class="video-item" onclick="playVideo('video/老鼠：“再见了，世界”.mp4', '老鼠：“再见了，世界”')">
+                <img src="image/1.jpg" alt="视频4封面">
+                <div class="video-title">老鼠：“再见了，世界”</div>
+            </div>
+            <div class="video-item" onclick="playVideo('video/逆时帧之轮.mp4', '逆时帧之轮')">
+                <img src="image/1.jpg" alt="视频5封面">
+                <div class="video-title">逆时帧之轮</div>
+            </div>
+            <div class="video-item" onclick="playVideo('video/万恶之源.mp4', '万恶之源')">
+                <img src="image/1.jpg" alt="视频6封面">
+                <div class="video-title">万恶之源</div>
+            </div>
+        </div>
+        <br>
+        <button class="btn" onclick="goBack()">返回</button>
+    </div>
+
+    <script>
+        function goBack() {
+            window.location.href = "index.html";
+        }
+
+        function playVideo(videoFile, videoTitle) {
+            const newWindow = window.open('', '_blank');
+            newWindow.document.write(`
+                <!DOCTYPE html>
+                <html lang="zh-CN">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>${videoTitle}</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            height: 100vh;
+                            background-color: #f0f0f0;
+                            margin: 0;
+                        }
+
+                        .container {
+                            text-align: center;
+                            background-color: #fff;
+                            padding: 20px;
+                            border-radius: 15px;
+                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                            width: 90%;
+                            max-width: 800px;
+                            transition: transform 0.3s ease;
+                        }
+
+                        .container:hover {
+                            transform: translateY(-10px);
+                        }
+
+                        h1 {
+                            color: #333;
+                            margin-bottom: 20px;
+                        }
+
+                        video {
+                            width: 100%;
+                            border-radius: 10px;
+                            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                            transition: box-shadow 0.3s ease;
+                        }
+
+                        video:hover {
+                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                        }
+
+                        .btn {
+                            background-color: #007BFF;
+                            color: white;
+                            border: none;
+                            padding: 10px 20px;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            font-size: 16px;
+                            transition: background-color 0.3s ease;
+                        }
+
+                        .btn:hover {
+                            background-color: #0056b3;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="container">
+                        <h1>${videoTitle}</h1>
+                        <video controls>
+                            <source src="${videoFile}" type="video/mp4">
+                            您的浏览器不支持视频标签。
+                        </video>
+                        <br>
+                        <button class="btn" onclick="window.close()">关闭</button>
+                    </div>
+                </body>
+                </html>
+            `);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>听音乐</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 500px;
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-10px);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        audio {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        audio:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #feb47b, #ff7e5f);
+        }
+
+        .music-list {
+            margin-bottom: 20px;
+        }
+
+        .music-list a {
+            display: block;
+            padding: 10px;
+            margin: 5px 0;
+            background: #f9f9f9;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #333;
+            transition: background 0.3s ease;
+        }
+
+        .music-list a:hover {
+            background: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>听音乐</h1>
+        <div class="music-list">
+            <a href="#" onclick="playMusic('music/周杰伦 - 反方向的钟.mp3')">周杰伦 - 反方向的钟</a>
+            <a href="#" onclick="playMusic('music/周杰伦 - 搁浅.mp3')">周杰伦 - 搁浅</a>
+            <a href="#" onclick="playMusic('music/周杰伦 - 夜曲.mp3')">周杰伦 - 夜曲</a>
+        </div>
+        <audio id="audioPlayer" controls>
+            <source src="your-music-file1.mp3" type="audio/mpeg">
+            您的浏览器不支持音频标签。
+        </audio>
+        <br>
+        <button class="btn" onclick="goBack()">返回</button>
+    </div>
+
+    <script>
+        function goBack() {
+            window.location.href = "index.html";
+        }
+
+        function playMusic(file) {
+            var audioPlayer = document.getElementById('audioPlayer');
+            audioPlayer.src = file;
+            audioPlayer.load();
+            audioPlayer.play();
+        }
+    </script>
+</body>
+</html>
